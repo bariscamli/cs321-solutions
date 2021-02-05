@@ -4,8 +4,6 @@
 #include <string>
 #include <tuple>
 
-// printer for a tuple of 4 int dimensions.you will need this in Q4 for easily sending tuples to the console.
-// this must be defined before including range lib here to make it compatible with clang
 
 std::ostream& operator<<(std::ostream& str, const std::tuple<int, int, int, int>& tpl)
 {
@@ -17,47 +15,6 @@ std::ostream& operator<<(std::ostream& str, const std::tuple<int, int, int, int>
 
 #include <range/v3/all.hpp>
 
-// Exam is about generating a year's days with extra knowledge of what week, month a day belongs.
-
-// Sample calendars provided for your convenience. Use a calendar software to see whole
-
-
-// YOU CANNOT CHANGETHE GIVEN CODE TEMPLATE. USE ONLY THE LOCATIONS UNDER THE QUESTION REGIONS.
-
-// YOU CANNOT USE "if" statement. ranges::find_ifandranges::find_if_notareallowed.
-// YOU CANNOT USE "for" statement.
-// YOU CANNOT USE "for_each" statement of range library.
-// YOU CANNOT USE "while" or "do-while" statement.
-// YOU CANNOT USE A MUTABLE LAMBDA (you can use non-mutable lambdas as many times as you want).
-// YOU CANNOT INSTANTIATE vector<T> or array<T, sz> yourself. You can use "to<vector<T>>" of range library.
-//  i.e. auto v = vector<int>{...} is forbidden.//  i.e. auto a = array<int, 10>{...} is forbidden.
-// YOU CANNOT ADD new "#include" directives.// YOU CANNOT ADD new "class" or "struct" declarations/definitions.
-// USE ONLY range-v3 library and allowed C++ facilities.// !! ANY FAILURE TO DO SO WILL MAKE YOU GET 0 GRADE FROM RELATED QUESTIONS !!
-
-// All questions will be tested with a different year other than 2020 or2021.
-// Q4 has 2 different grading paths:Q4_full path (70 pts), Q4_partial (45 pts) path.
-// Q4 is graded such that:// -If Q4_full works you get directly Q4's total points (70 pts). (Must exactly match correct result, solve however as you wish obeying the rules above)
-// -Else you can go for partial points by solving Q4a, Q4b, Q4c, Q4d.
-// You cansolve Q4_full and still solve Q4a, Q4b, Q4c, Q4d to guarantee partial points only in case Q4_full does not work in our test case.
-// Hint:You can print a container by changing it to a range and then sending to cout// cout << (container | views::all);
-// Hint:You can do arithmetic operations over iterators. iter2 -iter1 gives you the number of elements after iter1 to reach iter2.
-// Hint:below range-v3 facilities were enough for solving all the questions.
-// This does not mean that you are limited by the below tools. There are many ways to solve the same problem.
-// ranges::begin
-// ranges::find_if
-// to<vector<int>>
-// views::all
-// views::concat
-// views::exclusive_scan
-// views::iota
-// views::group_by
-// views::reverse
-// views::take
-// views::tail
-// views::transform
-// views::zip
-
-
 using std::vector;
 using std::array;
 using std::string;
@@ -65,9 +22,9 @@ using std::tuple;
 using std::cout;
 using std::endl;
 
-namespace views = ranges::views; // instead of ranges::views::*, directly use views::*
-namespace actions = ranges::actions; // instead of ranges::views::*, directly use views::*
-using namespace ranges; // instead of ranges::*, directly use *
+namespace views = ranges::views; 
+namespace actions = ranges::actions; 
+using namespace ranges; 
 
 
 enum DayOfWeek { Mon, Tue, Wed, Thu, Fri, Sat, Sun };
@@ -78,7 +35,7 @@ auto month_days = array<int, 12>{31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}
 
 void print_calendar(int year, DayOfWeek first_day){
     // calculate how many days are there in February
-    month_days[1] = 28 + (int)(year % 4 == 0); // you can use this trick to add 1 or 0 conditionally without an if
+    month_days[1] = 28 + (int)(year % 4 == 0); 
 
 
     cout << "Calendar Year is " << year << "." << endl;
